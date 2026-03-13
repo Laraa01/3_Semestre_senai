@@ -1,20 +1,40 @@
+import { useState } from 'react';
+
 const Aula03_Login = () => {
+
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
+    const [mensagem, setMensagem] = useState('')
+
+    const botaoEntrar = () => {
+        if (email == 'senai@senai.br' && senha == '123') {
+            setMensagem('Login bem sucedido')
+        } else {
+            setMensagem('Email ou senha incorreta')
+        }
+    }
+
     return (
-        <div style={estilos.card}>
+ <div style={estilos.card}>
             <img style={estilos.img} src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/SENAI_S%C3%A3o_Paulo_logo.png/1280px-SENAI_S%C3%A3o_Paulo_logo.png" alt="" />
             <h1 style={estilos.login}>Login</h1>
 
-            <div style={estilos}>
+
+ <div style={estilos}>
                 <label style={estilos.label}>Email</label>
-                <input type="text" placeholder='Digite seu Email' style={estilos.card2} />
-            </div>
+         <input type="text" placeholder='Digite seu email' style={estilos.card2} 
+         onChange={(event) => setEmail(event.target.value)} value={email} />
+             </div> 
 
             <div style={estilos}>
                 <label style={estilos.label}>Senha</label>
-                <input type="password" placeholder='Digite sua senha' style={estilos.card2} />
-            </div>
-            <button style={estilos.botao}>Entrar</button>
-        </div>
+         <input type="password" placeholder='Digite sua senha' style={estilos.card2} 
+         onChange={(event) => setSenha(event.target.value)} value={senha}/>
+             </div>  
+            <button onClick={botaoEntrar} style={estilos.botao}>Entrar</button>
+            <p style={{fontStyle: 'bold'}}>{mensagem}</p>
+       
+     </div>
     )
 }
 
